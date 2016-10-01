@@ -11,8 +11,27 @@
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
+<!--      for List use list instead set for Bag Collection use bag  Map use map -->
+      <set name="certificates" cascade="all">
+          <key column="employee_id"/>
+<!--    for List example         <list-index column="idx"/>-->
+          <one-to-many class="Certificate"/>
+<!--          <many-to-many column="certificate_id" class="Certificate"/>-->
+      </set>
       <property name="firstName" column="first_name" type="string"/>
       <property name="lastName" column="last_name" type="string"/>
       <property name="salary" column="salary" type="int"/>
+<!--           <many-to-one name="address" column="address" unique="true" 
+       class="Address" not-null="true"/>-->
    </class>
+   <class name="Certificate" table="certificate">
+       <meta attribute="class-description">
+           this class contains certificate reciords        
+       </meta>
+       <id name="id" column="id" type="int">
+           <generator class="native"/>
+       </id>
+<property name="name" column="certificate_name" type="string"/>
+   </class>
+   
 </hibernate-mapping>
